@@ -1,0 +1,48 @@
+LiveNature Sakura Swing / Falling Petal Update
+===============================================
+
+This update refines the Sakura feature using the supplied reference images.
+
+Changes
+-------
+* Lowered the tree-mounted swing to a realistic sitting height while keeping
+  the rope anchors on the existing strong horizontal Sakura branch.
+* Kept the existing Swing, Player, Camera and Interaction architecture.
+* Added first-person camera positioning/orientation when entering the swing
+  and immediate camera restoration when exiting.
+* Kept the existing third-person follow camera path.
+* Sakura petals now continuously respawn from several actual blossom-canopy
+  source regions instead of appearing from a generic sky cylinder.
+* Petals have varied size, pink shade, drift velocity, wind influence and
+  slightly jittered emission timing.
+* Petals are rendered as tiny crossed blossom/petal shapes rather than plain
+  point particles.
+* Added a subtle static carpet of fallen pink petals around the Sakura base.
+* Reused the existing fixed-size particle pool; MAX_SAKURA_PETALS remains 72.
+
+Verification
+------------
+* All project C++ translation units compile with C++11, -Wall and -Wextra.
+* The complete Linux test executable links successfully against the installed
+  OpenGL/GLU/FreeGLUT runtime libraries.
+* Under xvfb, the application initializes the full world and reaches the
+  normal Ready state. From the project working directory, all 6 audio layers
+  are discovered successfully.
+* Real interactive visual verification on a native desktop/GPU was not
+  possible in this container. The source and headless OpenGL startup path
+  were tested instead.
+
+
+Tent-only update (2026-09-23):
+- Added include/Tent.h and src/Tent.cpp for a single procedural A-frame camping tent beside the campfire.
+- Tent uses the existing fixed-function OpenGL primitives/rendering path; no new framework, input, camera, or particle system.
+- Tent placement: Config::TENT_X / Config::TENT_Z.
+- Added a vegetation exclusion zone around the tent so existing scatterers do not grow through it.
+- Existing Sakura, swing, falling petals, fireflies, campfire, fishing, lake, NPC, weather, audio, camera and particle systems were otherwise left unchanged.
+
+
+Latest minimal Sakura/campsite adjustment:
+- Kept the existing tent and all other systems unchanged.
+- Shifted the existing tree-mounted swing to the left Sakura limb while preserving the E interaction and low seat height.
+- Added a few asymmetrical left-side branch forks and fuller blossom clusters.
+- Increased the static fallen-petal carpet and lightly stretched it with wind direction; continuous petal particles remain unchanged.

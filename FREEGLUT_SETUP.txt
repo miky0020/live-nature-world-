@@ -1,0 +1,70 @@
+================================================================
+  HOW TO INSTALL FREEGLUT FOR MINGW ON WINDOWS
+================================================================
+
+If build.bat says it cannot find freeglut.h, follow these steps.
+
+----------------------------------------------------------------
+OPTION A - Use the FreeGLUT that comes with Code::Blocks (easiest)
+----------------------------------------------------------------
+
+Code::Blocks bundles FreeGLUT with its MinGW package.
+Check if these files exist on your machine:
+
+  C:\Program Files\CodeBlocks\MinGW\include\GL\freeglut.h
+  C:\Program Files\CodeBlocks\MinGW\lib\libfreeglut.a
+
+If they exist, build.bat will find them automatically.
+If they do NOT exist, your Code::Blocks install is missing them.
+Re-install Code::Blocks using the installer that includes MinGW:
+  https://www.codeblocks.org/downloads/binaries/
+  -> Download "codeblocks-XX.XXmingw-setup.exe" (the one with MinGW)
+
+----------------------------------------------------------------
+OPTION B - Download FreeGLUT manually
+----------------------------------------------------------------
+
+1. Go to: https://www.transmissionzero.co.uk/software/freeglut-devel/
+   Download: freeglut 3.x.x MinGW Package
+
+2. Unzip it. You get a folder like "freeglut".
+
+3. Put that "freeglut" folder RIGHT NEXT TO build.bat, so the
+   layout looks like this:
+
+   LiveNature\
+       build.bat
+       freeglut\
+           include\
+               GL\
+                   freeglut.h   <-- must be here
+           lib\
+               x64\
+                   libfreeglut.a
+
+4. Also copy freeglut\bin\x64\freeglut.dll into LiveNature\bin\
+   (create the bin folder if it doesn't exist yet).
+
+5. Run build.bat again.
+
+----------------------------------------------------------------
+OPTION C - Add FreeGLUT to MinGW directly
+----------------------------------------------------------------
+
+Copy the files from the freeglut package into MinGW:
+
+  freeglut\include\GL\*.h   ->  C:\Program Files\CodeBlocks\MinGW\include\GL\
+  freeglut\lib\x64\*.a      ->  C:\Program Files\CodeBlocks\MinGW\lib\
+  freeglut\bin\x64\*.dll    ->  C:\Windows\System32\
+
+After copying, build.bat will find everything automatically.
+
+================================================================
+  RUNTIME ERROR: "freeglut.dll was not found"
+================================================================
+
+Even after a successful build, the .exe needs freeglut.dll at
+runtime. Copy freeglut.dll into the same folder as LiveNature.exe
+(which is LiveNature\bin\).
+
+================================================================
